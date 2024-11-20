@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercedes Amor Ejercicio 1</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+<title>Calcular hipotenusa</title>
 </head>
 <body>
-    <h1>Cálculos</h1>
-    <a th:href="@{/calculos/primo/?numero=7}"> Calculos - primo 7 </a><br/>
-    <a th:href="@{/calculos/primo/?numero=8}"> Calculos - primo 8 </a><br/>
-    <a th:href="@{/calculos/primo/}"> Calculos - error (sin numero)</a><br/>
-    <a th:href="@{/calculos/hipotenusa/3/5}"> Calculos - hipotenusa 3/5 </a><br/>
-    <a th:href="@{/calculos/hipotenusa/-3/5}"> Calculos - hipotenusa -3/5 </a><br/>
-    <a th:href="@{/calculos/divisores/20}"> Calculos - divisores 20 </a><br/>
-
-    <p>El número: <span th:text="${numeroAComprobar}"></span><span th:text="${textoPrimo}"></span><br/></p>
-
-    </body>
+<h3>Cálculos de hipotenusa:</h3>
+Cateto 1:<input type="text" id="cateto1"/>
+Cateto 2:<input type="text" id="cateto2"/>
+<button onclick="calcularHipotenusa()">Calcular</button>
+<div th:if="${txtStatus!=null}">
+<p class="alert alert-danger" role="alert" th:text="${txtStatus}">error</p>
+</div>
+<script>
+function calcularHipotenusa() {
+var cateto1 = document.querySelector("#cateto1").value;
+var cateto2 = document.querySelector("#cateto2").value;
+window.location.href = "/calcularHipotenusa/" + cateto1 + "/" + cateto2;
+}
+</script>
+</body>
 </html>
